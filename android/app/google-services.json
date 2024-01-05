@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "444900169713",
+    "project_id": "planification-enements-sportif",
+    "storage_bucket": "planification-enements-sportif.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:444900169713:android:757ddc1fbcf9b0a0435650",
+        "android_client_info": {
+          "package_name": "com.example.evenmt_sportif"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_zDxPen9jpVkWJXHrQ6gZTnb9PCOJzZ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
