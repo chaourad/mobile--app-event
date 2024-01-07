@@ -1,6 +1,8 @@
+import 'package:evenmt_sportif/model/evenement.dart';
 import 'package:flutter/material.dart';
 
 class StackParticipant extends StatelessWidget {
+
   final double width;
   final double height;
   final double fontSize;
@@ -118,15 +120,7 @@ class StackParticipant extends StatelessWidget {
             ),
           ),
         ),
-        Positioned(
-          left: positionText,
-          child: Text(
-            "250+ Participants",
-            style: TextStyle(               
-                color:const Color(0xFF5569FE),
- fontSize: fontSize),
-          ),
-        )
+       
       ],
     );
   }

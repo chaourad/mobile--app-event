@@ -11,7 +11,7 @@ class ListAllPartipant extends StatefulWidget {
 }
 
 class _ListAllPartipantState extends State<ListAllPartipant> {
-  late List<String> participantEmails = []; // List to store participant emails
+  late List<String> participantEmails = []; 
 
   @override
   void initState() {

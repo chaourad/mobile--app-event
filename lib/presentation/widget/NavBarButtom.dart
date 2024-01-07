@@ -1,6 +1,5 @@
 import 'package:evenmt_sportif/presentation/pages/AjouterEvenemnt.dart';
 import 'package:evenmt_sportif/presentation/pages/HomePage.dart';
-import 'package:evenmt_sportif/presentation/pages/MessagePage.dart';
 import 'package:evenmt_sportif/presentation/pages/MyEventPage.dart';
 import 'package:evenmt_sportif/presentation/pages/ProfilePage.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +16,6 @@ class _NavBarButtonState extends State<NavBarButton> {
 
   final List<Widget> _pages = [
    const  HomePage(),
-    const MessagePage(),
     const AjouterEvent(),
     const MyEventPage(),
      ProfilePage(),
@@ -40,21 +38,12 @@ class _NavBarButtonState extends State<NavBarButton> {
 
             // textStyle: TextStyle(color: Colors.black12),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.message,
-              color: _currentIndex == 1
-                  ? const Color.fromRGBO(85, 105, 254, 1.0)
-                  : Colors.grey,
-              size: 30,
-            ),
-            label: "msg",
-          ),
+         
           BottomNavigationBarItem(
             icon: Icon(
               Icons.add,
               size: 30,
-              color: _currentIndex == 2
+              color: _currentIndex == 1
                   ? const Color.fromRGBO(85, 105, 254, 1.0)
                   : Colors.grey,
             ),
@@ -65,7 +54,7 @@ class _NavBarButtonState extends State<NavBarButton> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.event,
-              color: _currentIndex == 3
+              color: _currentIndex == 2
                   ? const Color.fromRGBO(85, 105, 254, 1.0)
                   : Colors.grey,
               size: 30,
@@ -75,7 +64,7 @@ class _NavBarButtonState extends State<NavBarButton> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.person,
-              color: _currentIndex == 4
+              color: _currentIndex == 3
                   ? const Color.fromRGBO(85, 105, 254, 1.0)
                   : Colors.grey,
               size: 30,

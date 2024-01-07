@@ -14,7 +14,7 @@ class ListParticipantPage extends StatefulWidget {
 }
 
 class _ListParticipantPageState extends State<ListParticipantPage> {
-  late List<String> participantEmails = []; // List to store participant emails
+  late List<String> participantEmails = []; 
 
  late User? user;
 
@@ -54,7 +54,7 @@ class _ListParticipantPageState extends State<ListParticipantPage> {
 
   // Add the participant's email to the list of accepted participants
   await eventRef.update({
-    'participants': FieldValue.arrayUnion([participantEmail]),
+    'participants': FieldValue.arrayUnion([user?.uid]),
     'nbrpartiactul': FieldValue.increment(1),
   });
   await FirebaseFirestore.instance
@@ -81,6 +81,10 @@ class _ListParticipantPageState extends State<ListParticipantPage> {
 
 }
   void _refuseparticipe(String participantEmail)async{
+    setState(() {
+      // Remove the participant from the list
+      participantEmails.remove(participantEmail);
+    });
      await FirebaseFirestore.instance
       .collection('listattentEvent')
       .where('eventId', isEqualTo: widget.eventModel.id)

@@ -9,59 +9,52 @@ import 'package:share/share.dart';
 class EventDetailsPage extends StatelessWidget {
   final Evenements eventModel;
 
-
-  
   Future<String?> getCurrentUserId() async {
     User? user = FirebaseAuth.instance.currentUser;
     return user?.uid;
   }
-void applyForEvent() {
-  getCurrentUserId().then((userId) {
-    if (userId != null) {
-      // Fetch additional user information from Firebase Authentication
-      User? user = FirebaseAuth.instance.currentUser;
 
-      if (user != null) {
-        String email = user.email ?? '';
+  void applyForEvent() {
+    getCurrentUserId().then((userId) {
+      if (userId != null && userId != eventModel.userId) {
+        User? user = FirebaseAuth.instance.currentUser;
 
-        // Create a new document in the 'listattentEvent' collection
-        FirebaseFirestore.instance.collection('listattentEvent').add({
-          'eventId': eventModel.id,
-          'applicantUserId': userId,
-          'emailapplicantUser': email,
-          'eventCreatorUserId': eventModel.userId,
-        }).then((_) {
-          // If the addition is successful, show a confirmation message
-          print('Application submitted successfully!');
-        }).catchError((error) {
-          // Handle errors, e.g., user not authenticated or Firestore error
-          print('Error submitting application. Please try again.');
-        });
+        if (user != null) {
+          String email = user.email ?? '';
+          FirebaseFirestore.instance.collection('listattentEvent').add({
+            'eventId': eventModel.id,
+            'applicantUserId': userId,
+            'emailapplicantUser': email,
+            'eventCreatorUserId': eventModel.userId,
+          }).then((_) {
+            print('Application submitted successfully!');
+          }).catchError((error) {
+            print('Error submitting application. Please try again.');
+          });
+        } else {
+          print('User not authenticated. Please log in.');
+        }
       } else {
         print('User not authenticated. Please log in.');
       }
-    } else {
-      print('User not authenticated. Please log in.');
-    }
-  });
-}
+    });
+  }
 
-
-
-
-
-  const EventDetailsPage({required this.eventModel, Key? key}) : super(key: key);
- void _shareEvent(BuildContext context) {
-    final String text = 'Check out this event: ${eventModel.name}, happening at ${eventModel.lieu} on ${eventModel.createdat}!';
+  const EventDetailsPage({required this.eventModel, Key? key})
+      : super(key: key);
+  void _shareEvent(BuildContext context) {
+    final String text =
+        'Check out this event: ${eventModel.name}, happening at ${eventModel.lieu} on ${eventModel.createdat}!';
     Share.share(text);
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Details"),
-          backgroundColor: const Color(0xFF5569FE),
-             actions: [
+        backgroundColor: const Color(0xFF5569FE),
+        actions: [
           IconButton(
             icon: const Icon(Icons.share),
             onPressed: () {
@@ -80,7 +73,7 @@ void applyForEvent() {
             children: [
               _buildCardImage(eventModel),
               const SizedBox(height: 16),
-              _buildDescription(eventModel),
+              _buildDescription(eventModel, context),
             ],
           ),
         ),
@@ -134,14 +127,15 @@ void applyForEvent() {
         ],
       );
 
-  Widget _buildDescription(Evenements eventModel) => Container(
+  Widget _buildDescription(Evenements eventModel, BuildContext context) =>
+      Container(
         margin: const EdgeInsets.only(top: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               eventModel.name,
-              style:const TextStyle(
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
@@ -149,43 +143,85 @@ void applyForEvent() {
             const SizedBox(height: 8),
             Row(
               children: [
-                const  Icon(Icons.add_location_alt_outlined),
-                  const SizedBox(width: 4),
-                  Text(
-                    eventModel.lieu,
-                    style: const TextStyle(
-                      fontSize: 12,
-                      color: Color.fromARGB(255, 77, 77, 77),
-                    ),
-                  )
+                const Icon(Icons.add_location_alt_outlined),
+                const SizedBox(width: 4),
+                Text(
+                  eventModel.lieu,
+                  style: const TextStyle(
+                    fontSize: 12,
+                    color: Color.fromARGB(255, 77, 77, 77),
+                  ),
+                )
               ],
             ),
-             const SizedBox(height: 10,),
-           const   StackParticipant(
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              children: [
+                const StackParticipant(
                   width: 25,
                   height: 25,
                   fontSize: 12,
                   positionText: 95,
                 ),
-                             const SizedBox(height: 20,),
-
-            const  Text("Regles :", style:  TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-            SizedBox(
-              height: 100,
-              child: Text( eventModel.regle)),
+                const SizedBox(
+                  width: 80,
+                ),
+                Positioned(
+                  left: 95,
+                  child: Row(
+                    children: [
+                      Text(
+                        eventModel.nbrpartiactul.toString(),
+                        style: const TextStyle(
+                            color: Color(0xFF5569FE), fontSize: 12),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      const Text(
+                        "Participants",
+                        style:
+                            TextStyle(color: Color(0xFF5569FE), fontSize: 12),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            const Text(
+              "Regles :",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 100, child: Text(eventModel.regle)),
             SizedBox(
               width: 350,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFF5569FE),
-          foregroundColor: Colors.white, 
-          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
-        ),
-        onPressed: (){
-applyForEvent();        }, child:const Text("Apply now") ))
-          
+                  backgroundColor: const Color(0xFF5569FE),
+                  foregroundColor: Colors.white,
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+                ),
+                onPressed: () {
+                  getCurrentUserId().then((userId) {
+                    if (userId != null && userId != eventModel.userId) {
+                      applyForEvent();
+                    } else {
+                      // L'utilisateur actuel est le créateur de l'événement, désactivez le bouton
+                      print(
+                          "Current user is the creator of the event, button disabled");
+                    }
+                  });
+                },
+                child: const Text("Apply now"),
+              ),
+            )
           ],
         ),
       );
-     
 }

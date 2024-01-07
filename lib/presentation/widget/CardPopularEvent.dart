@@ -96,7 +96,7 @@ class CardPopularEvent extends StatelessWidget {
                   const SizedBox(height: 6),
                   Row(
                     children: [
-                      const Icon(Icons.add_location_alt_outlined),
+const Icon(Icons.location_on), 
                       const SizedBox(width: 4),
                       Text(
                         eventModel.lieu,

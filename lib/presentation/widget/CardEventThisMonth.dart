@@ -51,8 +51,7 @@ class CardEventThisMonth extends StatelessWidget {
                 const SizedBox(height: 4),
                 Row(
                   children: [
-                    const Icon(Icons.add_location_alt_outlined),
-                    const SizedBox(width: 4),
+const Icon(Icons.location_on),                    const SizedBox(width: 4),
                     Text(
                       eventModel.lieu,
                       style: const TextStyle(

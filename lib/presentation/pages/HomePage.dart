@@ -18,15 +18,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title:const Text(""),    actions: [
-          IconButton(
-            icon: const Icon(Icons.notifications),
-            color: Colors.black87,
-            onPressed: () {
-             // print("ok");
-            },
-          ),
-        ],),
+   
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
@@ -76,7 +68,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 */
-            const SizedBox(height: 24),
+            const SizedBox(height: 54),
             const TitleList(titre: "Category of sport"),
             const CategoryListView(),
             const SizedBox(height: 24),
@@ -95,27 +87,36 @@ class _HomePageState extends State<HomePage> {
 }
 
 _cardhoe() => StreamBuilder<QuerySnapshot>(
-      stream: FirebaseFirestore.instance.collection('événements').snapshots(),
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: List.generate(
-                snapshot.data!.docs.length,
-                (index) => CardPopularEvent(
-                  eventModel: Evenements.fromJson(
-                    snapshot.data!.docs[index],
-                  ),
-                ),
-              ),
-            ),
-          );
-        } else {
-          return const CircularProgressIndicator();
-        }
-      },
-    );
+  stream: FirebaseFirestore.instance.collection('événements').snapshots(),
+  builder: (context, snapshot) {
+    if (snapshot.hasData) {
+      // Convertir les documents en une liste d'événements
+      List<Evenements> events = snapshot.data!.docs.map((doc) {
+        return Evenements.fromJson(doc);
+      }).toList();
+
+      // Trier les événements en fonction du nombre de participants
+      events.sort((a, b) => b.nbrpartiactul.compareTo(a.nbrpartiactul));
+
+      // Prendre les 5 premiers événements
+      List<Evenements> top5Events = events.take(5).toList();
+
+      return SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: top5Events.map((event) {
+            return CardPopularEvent(
+              eventModel: event,
+            );
+          }).toList(),
+        ),
+      );
+    } else {
+      return const CircularProgressIndicator();
+    }
+  },
+);
+
 _cardevent() => StreamBuilder<QuerySnapshot>(
       stream: FirebaseFirestore.instance.collection('événements').snapshots(),
       builder: (context, snapshot) {

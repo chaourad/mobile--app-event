@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:evenmt_sportif/model/category.dart';
 import 'package:evenmt_sportif/model/evenement.dart';
+import 'package:evenmt_sportif/presentation/widget/NavBarButtom.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -81,7 +82,7 @@ class _AjouterEventState extends State<AjouterEvent> {
 
       Map<String, dynamic> data = {
         "lieu": lieuController.text,
-        "typeEvnId": selectedValue!.id,
+        "typeEvnId": selectedValue!.name,
         "regle": regleController.text,
         "userId": userId,
         "dateDebut": selectedTimestamp,
@@ -101,6 +102,17 @@ class _AjouterEventState extends State<AjouterEvent> {
         await FirebaseFirestore.instance.collection("événements").add(data);
       }
       clearFields();
+         const snackBar = SnackBar(
+      content: Text(
+        'Application submitted successfully!.',
+        style: TextStyle(color: Colors.white),
+      ),
+      backgroundColor: Colors.green,
+    );
+
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                         Navigator.pushNamed(context, 'home');
+
       
     } catch (e) {
       print("Error during file upload: $e");
