@@ -5,7 +5,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:image_picker/image_picker.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -59,43 +58,42 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Future<void> _pickImage() async {
-  try {
-    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
-    setState(() {
-      _image = image;
-      file = File(image!.path);
-      urlimage.text = _image?.path ?? '';
-    });
+    try {
+      final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+      setState(() {
+        _image = image;
+        file = File(image!.path);
+        urlimage.text = _image?.path ?? '';
+      });
 
-    await _uploadFile(); // Appeler la fonction pour télécharger le fichier après avoir choisi une nouvelle image
-  } catch (e) {
-    print('Error picking image: $e');
-    // Gérez l'erreur (affichez un message, etc.)
+      await _uploadFile(); // Appeler la fonction pour télécharger le fichier après avoir choisi une nouvelle image
+    } catch (e) {
+      print('Error picking image: $e');
+      // Gérez l'erreur (affichez un message, etc.)
+    }
   }
-}
 
-Future<void> _uploadFile() async {
-  try {
-    Reference storageReference = FirebaseStorage.instance
-        .ref()
-        .child("profile/${DateTime.now().millisecondsSinceEpoch}.jpg");
+  Future<void> _uploadFile() async {
+    try {
+      Reference storageReference = FirebaseStorage.instance
+          .ref()
+          .child("profile/${DateTime.now().millisecondsSinceEpoch}.jpg");
 
-    TaskSnapshot taskSnapshot =
-        await storageReference.putFile(File(_image!.path));
+      TaskSnapshot taskSnapshot =
+          await storageReference.putFile(File(_image!.path));
 
-    String photoUrl = await taskSnapshot.ref.getDownloadURL();
+      String photoUrl = await taskSnapshot.ref.getDownloadURL();
 
-    Map<String, dynamic> data = {
-      "image": photoUrl,
-      'created_at': FieldValue.serverTimestamp()
-    };
+      Map<String, dynamic> data = {
+        "image": photoUrl,
+        'created_at': FieldValue.serverTimestamp()
+      };
 
-    await firestore.collection('users').doc(user!.uid).update(data);
-  } catch (e) {
-    print("Error during file upload: $e");
+      await firestore.collection('users').doc(user!.uid).update(data);
+    } catch (e) {
+      print("Error during file upload: $e");
+    }
   }
-}
-
 
   @override
   Widget build(BuildContext context) {
@@ -125,15 +123,15 @@ Future<void> _uploadFile() async {
                   child: CircleAvatar(
                     maxRadius: 65,
                     backgroundImage: _image != null
-    ? FileImage(file!)
-    : AssetImage("assets/6195145.jpg") as ImageProvider<Object>,
-
+                        ? FileImage(file!)
+                        : const AssetImage("assets/6195145.jpg")
+                            as ImageProvider<Object>,
                     child: Container(
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: Colors.black.withOpacity(0.6),
                       ),
-                      child: Icon(
+                      child: const Icon(
                         Icons.edit,
                         color: Colors.white,
                       ),
@@ -157,14 +155,14 @@ Future<void> _uploadFile() async {
                 )
               ],
             ),
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [Text("@peakyBlinders")],
             ),
             const SizedBox(
               height: 15,
             ),
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(

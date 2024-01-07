@@ -1,13 +1,16 @@
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:evenmt_sportif/model/category.dart';
+import 'package:evenmt_sportif/model/evenement.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 class AjouterEvent extends StatefulWidget {
-  const AjouterEvent({Key? key}) : super(key: key);
+    final Evenements? eventModel;
+
+  const AjouterEvent({Key? key, this.eventModel}) : super(key: key);
 
   @override
   State<AjouterEvent> createState() => _AjouterEventState();
@@ -18,15 +21,17 @@ class _AjouterEventState extends State<AjouterEvent> {
 
   final TextEditingController nameController = TextEditingController();
   final TextEditingController lieuController = TextEditingController();
-  final TextEditingController maxParticipantController = TextEditingController();
-  final TextEditingController RegleController = TextEditingController();
+  final TextEditingController maxParticipantController =
+      TextEditingController();
+  final TextEditingController regleController = TextEditingController();
   final TextEditingController dateInputController = TextEditingController();
   final TextEditingController typeController = TextEditingController();
   final TextEditingController urlimage = TextEditingController();
 
   Timestamp selectedTimestamp = Timestamp.now();
   XFile? _image;
-
+  Category? selectedValue;
+  List<DropdownMenuItem<Category>> dropdownItems = [];
   File? file;
 
   Future<String?> getCurrentUserId() async {
@@ -44,7 +49,6 @@ class _AjouterEventState extends State<AjouterEvent> {
       });
     } catch (e) {
       print('Error picking image: $e');
-      // Handle the error (display a message, etc.)
     }
   }
 
@@ -52,7 +56,7 @@ class _AjouterEventState extends State<AjouterEvent> {
     nameController.clear();
     lieuController.clear();
     maxParticipantController.clear();
-    RegleController.clear();
+    regleController.clear();
     urlimage.clear();
     typeController.clear();
     dateInputController.clear();
@@ -73,39 +77,93 @@ class _AjouterEventState extends State<AjouterEvent> {
 
       String photoUrl = await taskSnapshot.ref.getDownloadURL();
       String? userId = await getCurrentUserId();
-      print('Current User ID: $userId');
+      //print('Current User ID: $userId');
 
       Map<String, dynamic> data = {
         "lieu": lieuController.text,
-        "typeEvnId": "fcgvhjbkn",
-        "regle": RegleController.text,
+        "typeEvnId": selectedValue!.id,
+        "regle": regleController.text,
         "userId": userId,
         "dateDebut": selectedTimestamp,
         "maxParticipant": int.parse(maxParticipantController.text),
         "name": nameController.text,
         "image": photoUrl,
-        'created_at': FieldValue.serverTimestamp()
-
+        'created_at': FieldValue.serverTimestamp(),
       };
 
-      await FirebaseFirestore.instance.collection("événements").add(data);
-
+  if (widget.eventModel != null) {
+        await FirebaseFirestore.instance
+            .collection("événements")
+            .doc(widget.eventModel!.id)
+            .update(data);
+            //envoye des notification 
+      } else {
+        await FirebaseFirestore.instance.collection("événements").add(data);
+      }
       clearFields();
+      
     } catch (e) {
       print("Error during file upload: $e");
     }
   }
+ @override
+  void initState() {
+    super.initState();
+    type(); 
+    if (widget.eventModel != null) {
+      populateFields(); 
+    }
+  }
+  void populateFields() {
+  nameController.text = widget.eventModel?.name ?? '';
+  lieuController.text = widget.eventModel?.lieu ?? '';
+  maxParticipantController.text =
+  widget.eventModel?.maxParticipant.toString() ?? '';
+  regleController.text = widget.eventModel?.regle ?? '';
+  dateInputController.text = widget.eventModel?.dateDebut.toDate().toString() ?? '';
+  urlimage.text = widget.eventModel?.image ?? '';
+}
+  Future<void> type() async {
+  try {
+    QuerySnapshot<Map<String, dynamic>> categoriesSnapshot =
+        await FirebaseFirestore.instance.collection('Category').get();
+
+    List<Category> categories = categoriesSnapshot.docs.map((doc) {
+      return Category.fromJson(doc);
+    }).toList();
+
+    if (categories.length > 0) {
+      setState(() {
+        dropdownItems = categories
+            .map((Category category) {
+              return DropdownMenuItem<Category>(
+                value: category,
+                child: Text(category.name),
+              );
+            })
+            .toList();
+      });
+
+      print('Dropdown Items: $dropdownItems');
+    } else {
+      print('No data available in the "Category" collection.');
+    }
+  } catch (error) {
+    print('Error: $error');
+  }
+}
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       appBar: AppBar(
+      appBar: AppBar(
         title: const Text(
           'Ajouter des événements',
           style: TextStyle(color: Colors.white),
         ),
-        backgroundColor:const Color.fromRGBO(85, 105, 254, 1.0),
-        iconTheme:const IconThemeData(color: Colors.white),
+        backgroundColor: const Color.fromRGBO(85, 105, 254, 1.0),
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -124,7 +182,7 @@ class _AjouterEventState extends State<AjouterEvent> {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: _pickImage,
-              child: Text('Pick Image from Gallery'),
+              child: const Text('Pick Image from Gallery'),
             ),
             const SizedBox(height: 20),
             TextField(
@@ -206,7 +264,7 @@ class _AjouterEventState extends State<AjouterEvent> {
             ),
             const SizedBox(height: 15),
             TextFormField(
-              controller: RegleController,
+              controller: regleController,
               minLines: 4,
               maxLines: 8,
               keyboardType: TextInputType.multiline,
@@ -218,6 +276,37 @@ class _AjouterEventState extends State<AjouterEvent> {
               ),
             ),
             const SizedBox(height: 20),
+            DropdownButtonFormField<Category>(
+              decoration: InputDecoration(
+                enabledBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(
+                    color: Color.fromARGB(255, 114, 114, 114),
+                    width: 2,
+                  ),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                border: OutlineInputBorder(
+                  borderSide: const BorderSide(
+                    color: Color.fromARGB(255, 114, 114, 114),
+                    width: 2,
+                  ),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                filled: true,
+                fillColor: Colors.grey.shade100,
+              ),
+              dropdownColor: Colors.grey.shade100,
+              value: selectedValue,
+              onChanged: (Category? newValue) {
+                setState(() {
+                  selectedValue = newValue;
+                    print("Selected Category ID: ${selectedValue!.id}");
+
+                });
+              },
+              items: dropdownItems,
+            ),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -227,7 +316,7 @@ class _AjouterEventState extends State<AjouterEvent> {
                       Navigator.pushNamed(context, 'home');
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: Color(0xFF5569FE),
+                      backgroundColor: const Color(0xFF5569FE),
                     ),
                     child: const Text(
                       "Cancel",
@@ -243,16 +332,14 @@ class _AjouterEventState extends State<AjouterEvent> {
                   child: ElevatedButton(
                     onPressed: () async {
                       try {
-                        // Conversion des champs numériques
-                        int nbrMin = int.parse(maxParticipantController.text);
-
                         await _uploadFile();
+                        //Navigate
                       } catch (e) {
                         print("Error adding activity: $e");
                       }
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: Color(0xFF5569FE),
+                      backgroundColor: const Color(0xFF5569FE),
                     ),
                     child: const Text(
                       "Submit",

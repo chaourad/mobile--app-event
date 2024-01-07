@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:evenmt_sportif/model/user.dart';
 
 class Evenements {
   String id;
@@ -10,9 +9,11 @@ class Evenements {
   String typeEvnId;
   String userId;
   Timestamp dateDebut;
-  Timestamp created_at;
+  int nbrpartiactul;
+  Timestamp createdat;
+    bool hasNotification;
   String image;
-  List<User> participants;
+  List<String>? participants;
 
   Evenements(
       {required this.id,
@@ -24,11 +25,18 @@ class Evenements {
       required this.typeEvnId,
       required this.userId,
       required this.participants,
-      required this.created_at,
+      required this.nbrpartiactul,
+      required this.createdat,
+      required this.hasNotification,
       required this.image});
 
   factory Evenements.fromJson(DocumentSnapshot doc) {
     Map data = doc.data() as Map;
+    List<dynamic>? participantsData = data['participants'] as List<dynamic>?;
+
+    List<String>? participants =
+        participantsData?.map((participant) => participant as String).toList();
+
     return Evenements(
         id: doc.id,
         name: data['name'] as String? ?? '',
@@ -38,9 +46,11 @@ class Evenements {
         regle: data['regle'] as String? ?? '',
         typeEvnId: data['typeEvnId'] as String? ?? '',
         image: data['image'] as String? ?? '',
-        participants: data['participants'] != null
-            ? List<User>.from(data['participants'].map((x) => User.fromJson(x))): [],
-            created_at : data['created_at']  as Timestamp? ?? Timestamp.now(),
+        participants: participants,
+        hasNotification: data['listattentEvent'] != null &&
+          data['listattentEvent'].contains(/* Nouvel élément */),     
+         nbrpartiactul: data['nbrpartiactul'] as int? ?? 0,
+        createdat: data['created_at'] as Timestamp? ?? Timestamp.now(),
         userId: data['userId'] as String? ?? '');
   }
 
@@ -54,11 +64,11 @@ class Evenements {
       'regle': regle,
       'typeEvnId': typeEvnId,
       'userId': userId,
-      'participants': participants.map((user) => user.toJson()).toList(),
+      'participants': participants,
       'image': image,
-      'created_at': created_at
+      'nbrpartiactul': nbrpartiactul,
+      'created_at': createdat
     };
   }
-
+ 
 }
-

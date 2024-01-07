@@ -17,6 +17,8 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController passwordController = TextEditingController();
 
    bool _isHidden = true;
+       final FirebaseFirestore _firestore = FirebaseFirestore.instance; // Add this line
+
 
  Future<void> _signInWithEmailAndPassword(BuildContext context) async {
   try {
@@ -51,13 +53,11 @@ class _LoginPageState extends State<LoginPage> {
   }
 }
 void createUserInFirestore(String userEmail ,String userId ) async {
-  CollectionReference users = FirebaseFirestore.instance.collection('users');
+ _firestore.collection('users').doc(userId).set({
+    'email': userEmail, 'created_at': FieldValue.serverTimestamp(), "userId":userId 
+  });
 
-  QuerySnapshot querySnapshot = await users.where('email', isEqualTo: userEmail).get();
-
-  if (querySnapshot.docs.isEmpty) {
-    await users.add({'email': userEmail, 'created_at': FieldValue.serverTimestamp(), "userId":userId });
-  }
+  
 }
 
   void _visibility() {

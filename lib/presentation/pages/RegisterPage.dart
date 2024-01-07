@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:evenmt_sportif/presentation/pages/HomePage.dart';
 import 'package:evenmt_sportif/presentation/widget/NavBarButtom.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

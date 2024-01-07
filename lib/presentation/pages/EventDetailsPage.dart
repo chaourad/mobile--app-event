@@ -1,4 +1,7 @@
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:evenmt_sportif/presentation/widget/StackParticipant.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:evenmt_sportif/model/evenement.dart';
 import 'package:share/share.dart';
@@ -6,9 +9,50 @@ import 'package:share/share.dart';
 class EventDetailsPage extends StatelessWidget {
   final Evenements eventModel;
 
+
+  
+  Future<String?> getCurrentUserId() async {
+    User? user = FirebaseAuth.instance.currentUser;
+    return user?.uid;
+  }
+void applyForEvent() {
+  getCurrentUserId().then((userId) {
+    if (userId != null) {
+      // Fetch additional user information from Firebase Authentication
+      User? user = FirebaseAuth.instance.currentUser;
+
+      if (user != null) {
+        String email = user.email ?? '';
+
+        // Create a new document in the 'listattentEvent' collection
+        FirebaseFirestore.instance.collection('listattentEvent').add({
+          'eventId': eventModel.id,
+          'applicantUserId': userId,
+          'emailapplicantUser': email,
+          'eventCreatorUserId': eventModel.userId,
+        }).then((_) {
+          // If the addition is successful, show a confirmation message
+          print('Application submitted successfully!');
+        }).catchError((error) {
+          // Handle errors, e.g., user not authenticated or Firestore error
+          print('Error submitting application. Please try again.');
+        });
+      } else {
+        print('User not authenticated. Please log in.');
+      }
+    } else {
+      print('User not authenticated. Please log in.');
+    }
+  });
+}
+
+
+
+
+
   const EventDetailsPage({required this.eventModel, Key? key}) : super(key: key);
  void _shareEvent(BuildContext context) {
-    final String text = 'Check out this event: ${eventModel.name}, happening at ${eventModel.lieu} on ${eventModel.created_at}!';
+    final String text = 'Check out this event: ${eventModel.name}, happening at ${eventModel.lieu} on ${eventModel.createdat}!';
     Share.share(text);
   }
   @override
@@ -21,7 +65,7 @@ class EventDetailsPage extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.share),
             onPressed: () {
-              print("ok");
+              //share event
               _shareEvent(context);
             },
           ),
@@ -136,9 +180,10 @@ class EventDetailsPage extends StatelessWidget {
           backgroundColor: const Color(0xFF5569FE),
           foregroundColor: Colors.white, 
           padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
-        ),onPressed: (){}, child:const Text("Apply now") ))
-           
-           
+        ),
+        onPressed: (){
+applyForEvent();        }, child:const Text("Apply now") ))
+          
           ],
         ),
       );

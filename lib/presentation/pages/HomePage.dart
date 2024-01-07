@@ -18,6 +18,15 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title:const Text(""),    actions: [
+          IconButton(
+            icon: const Icon(Icons.notifications),
+            color: Colors.black87,
+            onPressed: () {
+             // print("ok");
+            },
+          ),
+        ],),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
@@ -67,9 +76,10 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 */
-
-           const SizedBox(height: 24),
-           
+            const SizedBox(height: 24),
+            const TitleList(titre: "Category of sport"),
+            const CategoryListView(),
+            const SizedBox(height: 24),
             const TitleList(titre: "Popular Event"),
             const SizedBox(height: 16),
             _cardhoe(),
