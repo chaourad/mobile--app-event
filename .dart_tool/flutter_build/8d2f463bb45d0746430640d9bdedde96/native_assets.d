@@ -1,0 +1,1 @@
+ C:\\Users\\chaourad\\Documents\\evenmt_sportif\\.dart_tool\\flutter_build\\8d2f463bb45d0746430640d9bdedde96\\native_assets.yaml: 

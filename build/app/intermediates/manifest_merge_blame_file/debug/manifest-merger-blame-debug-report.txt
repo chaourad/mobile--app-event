@@ -1,0 +1,579 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.evenmt_sportif"
+4    android:versionCode="1"
+5    android:versionName="0.1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="19"
+9        android:targetSdkVersion="33" />
+10    <!--
+11         The INTERNET permission is required for development. Specifically,
+12         the Flutter tool needs it to communicate with the running application
+13         to allow setting breakpoints, to provide hot reload, etc.
+14    -->
+15    <uses-permission android:name="android.permission.INTERNET" />
+15-->C:\Users\chaourad\Documents\evenmt_sportif\android\app\src\debug\AndroidManifest.xml:6:5-66
+15-->C:\Users\chaourad\Documents\evenmt_sportif\android\app\src\debug\AndroidManifest.xml:6:22-64
+16    <uses-permission android:name="android.permission.WAKE_LOCK" />
+16-->[:firebase_messaging] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:10:5-68
+16-->[:firebase_messaging] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:10:22-65
+17    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- Permissions options for the `notification` group -->
+17-->[:firebase_messaging] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:11:5-79
+17-->[:firebase_messaging] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:11:22-76
+18    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" /> <!-- Required by older versions of Google Play services to create IID tokens -->
+18-->[:firebase_messaging] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:13:5-77
+18-->[:firebase_messaging] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:13:22-74
+19    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+19-->[com.google.firebase:firebase-messaging:23.3.1] C:\Users\chaourad\.gradle\caches\transforms-3\a693bd55d35e2c8adb4fb93735c4124a\transformed\jetified-firebase-messaging-23.3.1\AndroidManifest.xml:26:5-82
+19-->[com.google.firebase:firebase-messaging:23.3.1] C:\Users\chaourad\.gradle\caches\transforms-3\a693bd55d35e2c8adb4fb93735c4124a\transformed\jetified-firebase-messaging-23.3.1\AndroidManifest.xml:26:22-79
+20
+21    <permission
+21-->[androidx.core:core:1.10.1] C:\Users\chaourad\.gradle\caches\transforms-3\889ce5bd12f1117e5357d5fcdb5e1305\transformed\core-1.10.1\AndroidManifest.xml:22:5-24:47
+22        android:name="com.example.evenmt_sportif.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+22-->[androidx.core:core:1.10.1] C:\Users\chaourad\.gradle\caches\transforms-3\889ce5bd12f1117e5357d5fcdb5e1305\transformed\core-1.10.1\AndroidManifest.xml:23:9-81
+23        android:protectionLevel="signature" />
+23-->[androidx.core:core:1.10.1] C:\Users\chaourad\.gradle\caches\transforms-3\889ce5bd12f1117e5357d5fcdb5e1305\transformed\core-1.10.1\AndroidManifest.xml:24:9-44
+24
+25    <uses-permission android:name="com.example.evenmt_sportif.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+25-->[androidx.core:core:1.10.1] C:\Users\chaourad\.gradle\caches\transforms-3\889ce5bd12f1117e5357d5fcdb5e1305\transformed\core-1.10.1\AndroidManifest.xml:26:5-97
+25-->[androidx.core:core:1.10.1] C:\Users\chaourad\.gradle\caches\transforms-3\889ce5bd12f1117e5357d5fcdb5e1305\transformed\core-1.10.1\AndroidManifest.xml:26:22-94
+26
+27    <application
+28        android:name="android.app.Application"
+29        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+29-->[androidx.core:core:1.10.1] C:\Users\chaourad\.gradle\caches\transforms-3\889ce5bd12f1117e5357d5fcdb5e1305\transformed\core-1.10.1\AndroidManifest.xml:28:18-86
+30        android:debuggable="true"
+31        android:icon="@mipmap/ic_launcher"
+32        android:label="evenmt_sportif" >
+33        <activity
+34            android:name="com.example.evenmt_sportif.MainActivity"
+35            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+36            android:exported="true"
+37            android:hardwareAccelerated="true"
+38            android:launchMode="singleTop"
+39            android:theme="@style/LaunchTheme"
+40            android:windowSoftInputMode="adjustResize" >
+41
+42            <!--
+43                 Specifies an Android theme to apply to this Activity as soon as
+44                 the Android process has started. This theme is visible to the user
+45                 while the Flutter UI initializes. After that, this theme continues
+46                 to determine the Window background behind the Flutter UI.
+47            -->
+48            <meta-data
+49                android:name="io.flutter.embedding.android.NormalTheme"
+50                android:resource="@style/NormalTheme" />
+51
+52            <intent-filter>
+53                <action android:name="android.intent.action.MAIN" />
+54
+55                <category android:name="android.intent.category.LAUNCHER" />
+56            </intent-filter>
+57        </activity>
+58        <!--
+59             Don't delete the meta-data below.
+60             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+61        -->
+62        <meta-data
+63            android:name="flutterEmbedding"
+64            android:value="2" />
+65
+66        <service
+66-->[:cloud_firestore] C:\Users\chaourad\Documents\evenmt_sportif\build\cloud_firestore\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-14:19
+67            android:name="com.google.firebase.components.ComponentDiscoveryService"
+67-->[:cloud_firestore] C:\Users\chaourad\Documents\evenmt_sportif\build\cloud_firestore\intermediates\merged_manifest\debug\AndroidManifest.xml:10:18-89
+68            android:directBootAware="true"
+68-->[com.google.firebase:firebase-common:20.4.2] C:\Users\chaourad\.gradle\caches\transforms-3\29429379be0edfde063e43fae29f4d1b\transformed\jetified-firebase-common-20.4.2\AndroidManifest.xml:32:13-43
+69            android:exported="false" >
+69-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:68:13-37
+70            <meta-data
+70-->[:cloud_firestore] C:\Users\chaourad\Documents\evenmt_sportif\build\cloud_firestore\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
+71                android:name="com.google.firebase.components:io.flutter.plugins.firebase.firestore.FlutterFirebaseFirestoreRegistrar"
+71-->[:cloud_firestore] C:\Users\chaourad\Documents\evenmt_sportif\build\cloud_firestore\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-134
+72                android:value="com.google.firebase.components.ComponentRegistrar" />
+72-->[:cloud_firestore] C:\Users\chaourad\Documents\evenmt_sportif\build\cloud_firestore\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
+73            <meta-data
+73-->[:firebase_dynamic_links] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_dynamic_links\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-15:85
+74                android:name="com.google.firebase.components:io.flutter.plugins.firebase.dynamiclinks.FlutterFirebaseAppRegistrar"
+74-->[:firebase_dynamic_links] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_dynamic_links\intermediates\merged_manifest\debug\AndroidManifest.xml:14:17-131
+75                android:value="com.google.firebase.components.ComponentRegistrar" />
+75-->[:firebase_dynamic_links] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_dynamic_links\intermediates\merged_manifest\debug\AndroidManifest.xml:15:17-82
+76            <meta-data
+76-->[:firebase_auth] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
+77                android:name="com.google.firebase.components:io.flutter.plugins.firebase.auth.FlutterFirebaseAuthRegistrar"
+77-->[:firebase_auth] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-124
+78                android:value="com.google.firebase.components.ComponentRegistrar" />
+78-->[:firebase_auth] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
+79            <meta-data
+79-->[:firebase_storage] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_storage\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
+80                android:name="com.google.firebase.components:io.flutter.plugins.firebase.storage.FlutterFirebaseAppRegistrar"
+80-->[:firebase_storage] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_storage\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-126
+81                android:value="com.google.firebase.components.ComponentRegistrar" />
+81-->[:firebase_storage] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_storage\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
+82            <meta-data
+82-->[:firebase_messaging] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:38:13-40:85
+83                android:name="com.google.firebase.components:io.flutter.plugins.firebase.messaging.FlutterFirebaseAppRegistrar"
+83-->[:firebase_messaging] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:39:17-128
+84                android:value="com.google.firebase.components.ComponentRegistrar" />
+84-->[:firebase_messaging] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:40:17-82
+85            <meta-data
+85-->[:firebase_core] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
+86                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
+86-->[:firebase_core] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-124
+87                android:value="com.google.firebase.components.ComponentRegistrar" />
+87-->[:firebase_core] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
+88            <meta-data
+88-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:69:13-71:85
+89                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+89-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:70:17-109
+90                android:value="com.google.firebase.components.ComponentRegistrar" />
+90-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:71:17-82
+91            <meta-data
+91-->[com.google.firebase:firebase-firestore:24.9.1] C:\Users\chaourad\.gradle\caches\transforms-3\cdcc585bf5bfb7b79234bf5eb0173e42\transformed\jetified-firebase-firestore-24.9.1\AndroidManifest.xml:17:13-19:85
+92                android:name="com.google.firebase.components:com.google.firebase.firestore.FirebaseFirestoreKtxRegistrar"
+92-->[com.google.firebase:firebase-firestore:24.9.1] C:\Users\chaourad\.gradle\caches\transforms-3\cdcc585bf5bfb7b79234bf5eb0173e42\transformed\jetified-firebase-firestore-24.9.1\AndroidManifest.xml:18:17-122
+93                android:value="com.google.firebase.components.ComponentRegistrar" />
+93-->[com.google.firebase:firebase-firestore:24.9.1] C:\Users\chaourad\.gradle\caches\transforms-3\cdcc585bf5bfb7b79234bf5eb0173e42\transformed\jetified-firebase-firestore-24.9.1\AndroidManifest.xml:19:17-82
+94            <meta-data
+94-->[com.google.firebase:firebase-firestore:24.9.1] C:\Users\chaourad\.gradle\caches\transforms-3\cdcc585bf5bfb7b79234bf5eb0173e42\transformed\jetified-firebase-firestore-24.9.1\AndroidManifest.xml:20:13-22:85
+95                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
+95-->[com.google.firebase:firebase-firestore:24.9.1] C:\Users\chaourad\.gradle\caches\transforms-3\cdcc585bf5bfb7b79234bf5eb0173e42\transformed\jetified-firebase-firestore-24.9.1\AndroidManifest.xml:21:17-111
+96                android:value="com.google.firebase.components.ComponentRegistrar" />
+96-->[com.google.firebase:firebase-firestore:24.9.1] C:\Users\chaourad\.gradle\caches\transforms-3\cdcc585bf5bfb7b79234bf5eb0173e42\transformed\jetified-firebase-firestore-24.9.1\AndroidManifest.xml:22:17-82
+97            <meta-data
+97-->[com.google.firebase:firebase-messaging:23.3.1] C:\Users\chaourad\.gradle\caches\transforms-3\a693bd55d35e2c8adb4fb93735c4124a\transformed\jetified-firebase-messaging-23.3.1\AndroidManifest.xml:57:13-59:85
+98                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingKtxRegistrar"
+98-->[com.google.firebase:firebase-messaging:23.3.1] C:\Users\chaourad\.gradle\caches\transforms-3\a693bd55d35e2c8adb4fb93735c4124a\transformed\jetified-firebase-messaging-23.3.1\AndroidManifest.xml:58:17-122
+99                android:value="com.google.firebase.components.ComponentRegistrar" />
+99-->[com.google.firebase:firebase-messaging:23.3.1] C:\Users\chaourad\.gradle\caches\transforms-3\a693bd55d35e2c8adb4fb93735c4124a\transformed\jetified-firebase-messaging-23.3.1\AndroidManifest.xml:59:17-82
+100            <meta-data
+100-->[com.google.firebase:firebase-messaging:23.3.1] C:\Users\chaourad\.gradle\caches\transforms-3\a693bd55d35e2c8adb4fb93735c4124a\transformed\jetified-firebase-messaging-23.3.1\AndroidManifest.xml:60:13-62:85
+101                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
+101-->[com.google.firebase:firebase-messaging:23.3.1] C:\Users\chaourad\.gradle\caches\transforms-3\a693bd55d35e2c8adb4fb93735c4124a\transformed\jetified-firebase-messaging-23.3.1\AndroidManifest.xml:61:17-119
+102                android:value="com.google.firebase.components.ComponentRegistrar" />
+102-->[com.google.firebase:firebase-messaging:23.3.1] C:\Users\chaourad\.gradle\caches\transforms-3\a693bd55d35e2c8adb4fb93735c4124a\transformed\jetified-firebase-messaging-23.3.1\AndroidManifest.xml:62:17-82
+103            <meta-data
+103-->[com.google.firebase:firebase-dynamic-links:21.2.0] C:\Users\chaourad\.gradle\caches\transforms-3\fcb993994c8d621700e1ec9869bc52dc\transformed\jetified-firebase-dynamic-links-21.2.0\AndroidManifest.xml:24:13-26:85
+104                android:name="com.google.firebase.components:com.google.firebase.dynamiclinks.FirebaseDynamicLinksKtxRegistrar"
+104-->[com.google.firebase:firebase-dynamic-links:21.2.0] C:\Users\chaourad\.gradle\caches\transforms-3\fcb993994c8d621700e1ec9869bc52dc\transformed\jetified-firebase-dynamic-links-21.2.0\AndroidManifest.xml:25:17-128
+105                android:value="com.google.firebase.components.ComponentRegistrar" />
+105-->[com.google.firebase:firebase-dynamic-links:21.2.0] C:\Users\chaourad\.gradle\caches\transforms-3\fcb993994c8d621700e1ec9869bc52dc\transformed\jetified-firebase-dynamic-links-21.2.0\AndroidManifest.xml:26:17-82
+106            <meta-data
+106-->[com.google.firebase:firebase-dynamic-links:21.2.0] C:\Users\chaourad\.gradle\caches\transforms-3\fcb993994c8d621700e1ec9869bc52dc\transformed\jetified-firebase-dynamic-links-21.2.0\AndroidManifest.xml:27:13-29:85
+107                android:name="com.google.firebase.components:com.google.firebase.dynamiclinks.internal.FirebaseDynamicLinkRegistrar"
+107-->[com.google.firebase:firebase-dynamic-links:21.2.0] C:\Users\chaourad\.gradle\caches\transforms-3\fcb993994c8d621700e1ec9869bc52dc\transformed\jetified-firebase-dynamic-links-21.2.0\AndroidManifest.xml:28:17-133
+108                android:value="com.google.firebase.components.ComponentRegistrar" />
+108-->[com.google.firebase:firebase-dynamic-links:21.2.0] C:\Users\chaourad\.gradle\caches\transforms-3\fcb993994c8d621700e1ec9869bc52dc\transformed\jetified-firebase-dynamic-links-21.2.0\AndroidManifest.xml:29:17-82
+109            <meta-data
+109-->[com.google.firebase:firebase-storage:20.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\bbf749186807067795d9e875959ef2ea\transformed\jetified-firebase-storage-20.3.0\AndroidManifest.xml:30:13-32:85
+110                android:name="com.google.firebase.components:com.google.firebase.storage.FirebaseStorageKtxRegistrar"
+110-->[com.google.firebase:firebase-storage:20.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\bbf749186807067795d9e875959ef2ea\transformed\jetified-firebase-storage-20.3.0\AndroidManifest.xml:31:17-118
+111                android:value="com.google.firebase.components.ComponentRegistrar" />
+111-->[com.google.firebase:firebase-storage:20.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\bbf749186807067795d9e875959ef2ea\transformed\jetified-firebase-storage-20.3.0\AndroidManifest.xml:32:17-82
+112            <meta-data
+112-->[com.google.firebase:firebase-storage:20.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\bbf749186807067795d9e875959ef2ea\transformed\jetified-firebase-storage-20.3.0\AndroidManifest.xml:33:13-35:85
+113                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
+113-->[com.google.firebase:firebase-storage:20.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\bbf749186807067795d9e875959ef2ea\transformed\jetified-firebase-storage-20.3.0\AndroidManifest.xml:34:17-107
+114                android:value="com.google.firebase.components.ComponentRegistrar" />
+114-->[com.google.firebase:firebase-storage:20.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\bbf749186807067795d9e875959ef2ea\transformed\jetified-firebase-storage-20.3.0\AndroidManifest.xml:35:17-82
+115            <meta-data
+115-->[com.google.firebase:firebase-iid:21.1.0] C:\Users\chaourad\.gradle\caches\transforms-3\e85a376026f9936f633bfe02b56b4a77\transformed\jetified-firebase-iid-21.1.0\AndroidManifest.xml:32:13-34:85
+116                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
+116-->[com.google.firebase:firebase-iid:21.1.0] C:\Users\chaourad\.gradle\caches\transforms-3\e85a376026f9936f633bfe02b56b4a77\transformed\jetified-firebase-iid-21.1.0\AndroidManifest.xml:33:17-96
+117                android:value="com.google.firebase.components.ComponentRegistrar" />
+117-->[com.google.firebase:firebase-iid:21.1.0] C:\Users\chaourad\.gradle\caches\transforms-3\e85a376026f9936f633bfe02b56b4a77\transformed\jetified-firebase-iid-21.1.0\AndroidManifest.xml:34:17-82
+118            <meta-data
+118-->[com.google.firebase:firebase-installations:17.2.0] C:\Users\chaourad\.gradle\caches\transforms-3\2c88015c662e5d1148697b7d8f8942f8\transformed\jetified-firebase-installations-17.2.0\AndroidManifest.xml:15:13-17:85
+119                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsKtxRegistrar"
+119-->[com.google.firebase:firebase-installations:17.2.0] C:\Users\chaourad\.gradle\caches\transforms-3\2c88015c662e5d1148697b7d8f8942f8\transformed\jetified-firebase-installations-17.2.0\AndroidManifest.xml:16:17-130
+120                android:value="com.google.firebase.components.ComponentRegistrar" />
+120-->[com.google.firebase:firebase-installations:17.2.0] C:\Users\chaourad\.gradle\caches\transforms-3\2c88015c662e5d1148697b7d8f8942f8\transformed\jetified-firebase-installations-17.2.0\AndroidManifest.xml:17:17-82
+121            <meta-data
+121-->[com.google.firebase:firebase-installations:17.2.0] C:\Users\chaourad\.gradle\caches\transforms-3\2c88015c662e5d1148697b7d8f8942f8\transformed\jetified-firebase-installations-17.2.0\AndroidManifest.xml:18:13-20:85
+122                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+122-->[com.google.firebase:firebase-installations:17.2.0] C:\Users\chaourad\.gradle\caches\transforms-3\2c88015c662e5d1148697b7d8f8942f8\transformed\jetified-firebase-installations-17.2.0\AndroidManifest.xml:19:17-127
+123                android:value="com.google.firebase.components.ComponentRegistrar" />
+123-->[com.google.firebase:firebase-installations:17.2.0] C:\Users\chaourad\.gradle\caches\transforms-3\2c88015c662e5d1148697b7d8f8942f8\transformed\jetified-firebase-installations-17.2.0\AndroidManifest.xml:20:17-82
+124            <meta-data
+124-->[com.google.firebase:firebase-appcheck:17.1.1] C:\Users\chaourad\.gradle\caches\transforms-3\6fa492b6b6f785ddf0d6a31d3a323bd3\transformed\jetified-firebase-appcheck-17.1.1\AndroidManifest.xml:25:13-27:85
+125                android:name="com.google.firebase.components:com.google.firebase.appcheck.FirebaseAppCheckKtxRegistrar"
+125-->[com.google.firebase:firebase-appcheck:17.1.1] C:\Users\chaourad\.gradle\caches\transforms-3\6fa492b6b6f785ddf0d6a31d3a323bd3\transformed\jetified-firebase-appcheck-17.1.1\AndroidManifest.xml:26:17-120
+126                android:value="com.google.firebase.components.ComponentRegistrar" />
+126-->[com.google.firebase:firebase-appcheck:17.1.1] C:\Users\chaourad\.gradle\caches\transforms-3\6fa492b6b6f785ddf0d6a31d3a323bd3\transformed\jetified-firebase-appcheck-17.1.1\AndroidManifest.xml:27:17-82
+127            <meta-data
+127-->[com.google.firebase:firebase-appcheck:17.1.1] C:\Users\chaourad\.gradle\caches\transforms-3\6fa492b6b6f785ddf0d6a31d3a323bd3\transformed\jetified-firebase-appcheck-17.1.1\AndroidManifest.xml:28:13-30:85
+128                android:name="com.google.firebase.components:com.google.firebase.appcheck.FirebaseAppCheckRegistrar"
+128-->[com.google.firebase:firebase-appcheck:17.1.1] C:\Users\chaourad\.gradle\caches\transforms-3\6fa492b6b6f785ddf0d6a31d3a323bd3\transformed\jetified-firebase-appcheck-17.1.1\AndroidManifest.xml:29:17-117
+129                android:value="com.google.firebase.components.ComponentRegistrar" />
+129-->[com.google.firebase:firebase-appcheck:17.1.1] C:\Users\chaourad\.gradle\caches\transforms-3\6fa492b6b6f785ddf0d6a31d3a323bd3\transformed\jetified-firebase-appcheck-17.1.1\AndroidManifest.xml:30:17-82
+130            <meta-data
+130-->[com.google.firebase:firebase-common-ktx:20.4.2] C:\Users\chaourad\.gradle\caches\transforms-3\c9048a169e1b7f286a01eae6f43312f9\transformed\jetified-firebase-common-ktx-20.4.2\AndroidManifest.xml:12:13-14:85
+131                android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonLegacyRegistrar"
+131-->[com.google.firebase:firebase-common-ktx:20.4.2] C:\Users\chaourad\.gradle\caches\transforms-3\c9048a169e1b7f286a01eae6f43312f9\transformed\jetified-firebase-common-ktx-20.4.2\AndroidManifest.xml:13:17-116
+132                android:value="com.google.firebase.components.ComponentRegistrar" />
+132-->[com.google.firebase:firebase-common-ktx:20.4.2] C:\Users\chaourad\.gradle\caches\transforms-3\c9048a169e1b7f286a01eae6f43312f9\transformed\jetified-firebase-common-ktx-20.4.2\AndroidManifest.xml:14:17-82
+133            <meta-data
+133-->[com.google.firebase:firebase-common:20.4.2] C:\Users\chaourad\.gradle\caches\transforms-3\29429379be0edfde063e43fae29f4d1b\transformed\jetified-firebase-common-20.4.2\AndroidManifest.xml:35:13-37:85
+134                android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar"
+134-->[com.google.firebase:firebase-common:20.4.2] C:\Users\chaourad\.gradle\caches\transforms-3\29429379be0edfde063e43fae29f4d1b\transformed\jetified-firebase-common-20.4.2\AndroidManifest.xml:36:17-109
+135                android:value="com.google.firebase.components.ComponentRegistrar" />
+135-->[com.google.firebase:firebase-common:20.4.2] C:\Users\chaourad\.gradle\caches\transforms-3\29429379be0edfde063e43fae29f4d1b\transformed\jetified-firebase-common-20.4.2\AndroidManifest.xml:37:17-82
+136            <meta-data
+136-->[com.google.firebase:firebase-datatransport:18.1.7] C:\Users\chaourad\.gradle\caches\transforms-3\e581c130301c10ce6b8c5359bcdffea7\transformed\jetified-firebase-datatransport-18.1.7\AndroidManifest.xml:27:13-29:85
+137                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
+137-->[com.google.firebase:firebase-datatransport:18.1.7] C:\Users\chaourad\.gradle\caches\transforms-3\e581c130301c10ce6b8c5359bcdffea7\transformed\jetified-firebase-datatransport-18.1.7\AndroidManifest.xml:28:17-115
+138                android:value="com.google.firebase.components.ComponentRegistrar" />
+138-->[com.google.firebase:firebase-datatransport:18.1.7] C:\Users\chaourad\.gradle\caches\transforms-3\e581c130301c10ce6b8c5359bcdffea7\transformed\jetified-firebase-datatransport-18.1.7\AndroidManifest.xml:29:17-82
+139        </service>
+140        <service
+140-->[:firebase_messaging] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:16:9-19:72
+141            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingBackgroundService"
+141-->[:firebase_messaging] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:17:13-107
+142            android:exported="false"
+142-->[:firebase_messaging] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:18:13-37
+143            android:permission="android.permission.BIND_JOB_SERVICE" />
+143-->[:firebase_messaging] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:19:13-69
+144        <service
+144-->[:firebase_messaging] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:20:9-26:19
+145            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingService"
+145-->[:firebase_messaging] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:21:13-97
+146            android:exported="false" >
+146-->[:firebase_messaging] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:22:13-37
+147            <intent-filter>
+147-->[:firebase_messaging] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:23:13-25:29
+148                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+148-->[:firebase_messaging] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:24:17-78
+148-->[:firebase_messaging] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:24:25-75
+149            </intent-filter>
+150        </service>
+151
+152        <receiver
+152-->[:firebase_messaging] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:28:9-35:20
+153            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingReceiver"
+153-->[:firebase_messaging] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:29:13-98
+154            android:exported="true"
+154-->[:firebase_messaging] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:30:13-36
+155            android:permission="com.google.android.c2dm.permission.SEND" >
+155-->[:firebase_messaging] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:31:13-73
+156            <intent-filter>
+156-->[:firebase_messaging] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:32:13-34:29
+157                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+157-->[:firebase_messaging] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:33:17-81
+157-->[:firebase_messaging] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:33:25-78
+158            </intent-filter>
+159        </receiver>
+160
+161        <provider
+161-->[:firebase_messaging] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:43:9-47:38
+162            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingInitProvider"
+162-->[:firebase_messaging] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:44:13-102
+163            android:authorities="com.example.evenmt_sportif.flutterfirebasemessaginginitprovider"
+163-->[:firebase_messaging] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:45:13-88
+164            android:exported="false"
+164-->[:firebase_messaging] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:46:13-37
+165            android:initOrder="99" />
+165-->[:firebase_messaging] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:47:13-35
+166        <provider
+166-->[:image_picker_android] C:\Users\chaourad\Documents\evenmt_sportif\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-18:20
+167            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
+167-->[:image_picker_android] C:\Users\chaourad\Documents\evenmt_sportif\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-82
+168            android:authorities="com.example.evenmt_sportif.flutter.image_provider"
+168-->[:image_picker_android] C:\Users\chaourad\Documents\evenmt_sportif\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-74
+169            android:exported="false"
+169-->[:image_picker_android] C:\Users\chaourad\Documents\evenmt_sportif\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-37
+170            android:grantUriPermissions="true" >
+170-->[:image_picker_android] C:\Users\chaourad\Documents\evenmt_sportif\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-47
+171            <meta-data
+171-->[:image_picker_android] C:\Users\chaourad\Documents\evenmt_sportif\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-17:75
+172                android:name="android.support.FILE_PROVIDER_PATHS"
+172-->[:image_picker_android] C:\Users\chaourad\Documents\evenmt_sportif\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:16:17-67
+173                android:resource="@xml/flutter_image_picker_file_paths" />
+173-->[:image_picker_android] C:\Users\chaourad\Documents\evenmt_sportif\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:17:17-72
+174        </provider>
+175
+176        <activity
+176-->[:url_launcher_android] C:\Users\chaourad\Documents\evenmt_sportif\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-13:74
+177            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
+177-->[:url_launcher_android] C:\Users\chaourad\Documents\evenmt_sportif\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-74
+178            android:exported="false"
+178-->[:url_launcher_android] C:\Users\chaourad\Documents\evenmt_sportif\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-37
+179            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+179-->[:url_launcher_android] C:\Users\chaourad\Documents\evenmt_sportif\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-71
+180
+181        <provider
+181-->[:share_plus] C:\Users\chaourad\Documents\evenmt_sportif\build\share_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-18:20
+182            android:name="dev.fluttercommunity.plus.share.ShareFileProvider"
+182-->[:share_plus] C:\Users\chaourad\Documents\evenmt_sportif\build\share_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-77
+183            android:authorities="com.example.evenmt_sportif.flutter.share_provider"
+183-->[:share_plus] C:\Users\chaourad\Documents\evenmt_sportif\build\share_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-74
+184            android:exported="false"
+184-->[:share_plus] C:\Users\chaourad\Documents\evenmt_sportif\build\share_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-37
+185            android:grantUriPermissions="true" >
+185-->[:share_plus] C:\Users\chaourad\Documents\evenmt_sportif\build\share_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-47
+186            <meta-data
+186-->[:image_picker_android] C:\Users\chaourad\Documents\evenmt_sportif\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-17:75
+187                android:name="android.support.FILE_PROVIDER_PATHS"
+187-->[:image_picker_android] C:\Users\chaourad\Documents\evenmt_sportif\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:16:17-67
+188                android:resource="@xml/flutter_share_file_paths" />
+188-->[:image_picker_android] C:\Users\chaourad\Documents\evenmt_sportif\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:17:17-72
+189        </provider>
+190        <provider
+190-->[:share] C:\Users\chaourad\Documents\evenmt_sportif\build\share\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-18:20
+191            android:name="io.flutter.plugins.share.ShareFileProvider"
+191-->[:share] C:\Users\chaourad\Documents\evenmt_sportif\build\share\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-70
+192            android:authorities="com.example.evenmt_sportif.flutter.share_provider"
+192-->[:share] C:\Users\chaourad\Documents\evenmt_sportif\build\share\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-74
+193            android:exported="false"
+193-->[:share] C:\Users\chaourad\Documents\evenmt_sportif\build\share\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-37
+194            android:grantUriPermissions="true" >
+194-->[:share] C:\Users\chaourad\Documents\evenmt_sportif\build\share\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-47
+195            <meta-data
+195-->[:image_picker_android] C:\Users\chaourad\Documents\evenmt_sportif\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-17:75
+196                android:name="android.support.FILE_PROVIDER_PATHS"
+196-->[:image_picker_android] C:\Users\chaourad\Documents\evenmt_sportif\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:16:17-67
+197                android:resource="@xml/flutter_share_file_paths" />
+197-->[:image_picker_android] C:\Users\chaourad\Documents\evenmt_sportif\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:17:17-72
+198        </provider>
+199
+200        <activity
+200-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:29:9-46:20
+201            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+201-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:30:13-80
+202            android:excludeFromRecents="true"
+202-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:31:13-46
+203            android:exported="true"
+203-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:32:13-36
+204            android:launchMode="singleTask"
+204-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:33:13-44
+205            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+205-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:34:13-72
+206            <intent-filter>
+206-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:35:13-45:29
+207                <action android:name="android.intent.action.VIEW" />
+207-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:36:17-69
+207-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:36:25-66
+208
+209                <category android:name="android.intent.category.DEFAULT" />
+209-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:38:17-76
+209-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:38:27-73
+210                <category android:name="android.intent.category.BROWSABLE" />
+210-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:39:17-78
+210-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:39:27-75
+211
+212                <data
+212-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:41:17-44:51
+213                    android:host="firebase.auth"
+213-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:42:21-49
+214                    android:path="/"
+214-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:43:21-37
+215                    android:scheme="genericidp" />
+215-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:44:21-48
+216            </intent-filter>
+217        </activity>
+218        <activity
+218-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:47:9-64:20
+219            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
+219-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:48:13-79
+220            android:excludeFromRecents="true"
+220-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:49:13-46
+221            android:exported="true"
+221-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:50:13-36
+222            android:launchMode="singleTask"
+222-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:51:13-44
+223            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+223-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:52:13-72
+224            <intent-filter>
+224-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:53:13-63:29
+225                <action android:name="android.intent.action.VIEW" />
+225-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:36:17-69
+225-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:36:25-66
+226
+227                <category android:name="android.intent.category.DEFAULT" />
+227-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:38:17-76
+227-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:38:27-73
+228                <category android:name="android.intent.category.BROWSABLE" />
+228-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:39:17-78
+228-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:39:27-75
+229
+230                <data
+230-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:41:17-44:51
+231                    android:host="firebase.auth"
+231-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:42:21-49
+232                    android:path="/"
+232-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:43:21-37
+233                    android:scheme="recaptcha" />
+233-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\8f321ae7b2fefec4ba0b738a6fb8396c\transformed\jetified-firebase-auth-22.3.0\AndroidManifest.xml:44:21-48
+234            </intent-filter>
+235        </activity>
+236
+237        <receiver
+237-->[com.google.firebase:firebase-messaging:23.3.1] C:\Users\chaourad\.gradle\caches\transforms-3\a693bd55d35e2c8adb4fb93735c4124a\transformed\jetified-firebase-messaging-23.3.1\AndroidManifest.xml:29:9-40:20
+238            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+238-->[com.google.firebase:firebase-messaging:23.3.1] C:\Users\chaourad\.gradle\caches\transforms-3\a693bd55d35e2c8adb4fb93735c4124a\transformed\jetified-firebase-messaging-23.3.1\AndroidManifest.xml:30:13-78
+239            android:exported="true"
+239-->[com.google.firebase:firebase-messaging:23.3.1] C:\Users\chaourad\.gradle\caches\transforms-3\a693bd55d35e2c8adb4fb93735c4124a\transformed\jetified-firebase-messaging-23.3.1\AndroidManifest.xml:31:13-36
+240            android:permission="com.google.android.c2dm.permission.SEND" >
+240-->[com.google.firebase:firebase-messaging:23.3.1] C:\Users\chaourad\.gradle\caches\transforms-3\a693bd55d35e2c8adb4fb93735c4124a\transformed\jetified-firebase-messaging-23.3.1\AndroidManifest.xml:32:13-73
+241            <intent-filter>
+241-->[:firebase_messaging] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:32:13-34:29
+242                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+242-->[:firebase_messaging] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:33:17-81
+242-->[:firebase_messaging] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:33:25-78
+243            </intent-filter>
+244
+245            <meta-data
+245-->[com.google.firebase:firebase-messaging:23.3.1] C:\Users\chaourad\.gradle\caches\transforms-3\a693bd55d35e2c8adb4fb93735c4124a\transformed\jetified-firebase-messaging-23.3.1\AndroidManifest.xml:37:13-39:40
+246                android:name="com.google.android.gms.cloudmessaging.FINISHED_AFTER_HANDLED"
+246-->[com.google.firebase:firebase-messaging:23.3.1] C:\Users\chaourad\.gradle\caches\transforms-3\a693bd55d35e2c8adb4fb93735c4124a\transformed\jetified-firebase-messaging-23.3.1\AndroidManifest.xml:38:17-92
+247                android:value="true" />
+247-->[com.google.firebase:firebase-messaging:23.3.1] C:\Users\chaourad\.gradle\caches\transforms-3\a693bd55d35e2c8adb4fb93735c4124a\transformed\jetified-firebase-messaging-23.3.1\AndroidManifest.xml:39:17-37
+248        </receiver>
+249        <!--
+250             FirebaseMessagingService performs security checks at runtime,
+251             but set to not exported to explicitly avoid allowing another app to call it.
+252        -->
+253        <service
+253-->[com.google.firebase:firebase-messaging:23.3.1] C:\Users\chaourad\.gradle\caches\transforms-3\a693bd55d35e2c8adb4fb93735c4124a\transformed\jetified-firebase-messaging-23.3.1\AndroidManifest.xml:46:9-53:19
+254            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+254-->[com.google.firebase:firebase-messaging:23.3.1] C:\Users\chaourad\.gradle\caches\transforms-3\a693bd55d35e2c8adb4fb93735c4124a\transformed\jetified-firebase-messaging-23.3.1\AndroidManifest.xml:47:13-82
+255            android:directBootAware="true"
+255-->[com.google.firebase:firebase-messaging:23.3.1] C:\Users\chaourad\.gradle\caches\transforms-3\a693bd55d35e2c8adb4fb93735c4124a\transformed\jetified-firebase-messaging-23.3.1\AndroidManifest.xml:48:13-43
+256            android:exported="false" >
+256-->[com.google.firebase:firebase-messaging:23.3.1] C:\Users\chaourad\.gradle\caches\transforms-3\a693bd55d35e2c8adb4fb93735c4124a\transformed\jetified-firebase-messaging-23.3.1\AndroidManifest.xml:49:13-37
+257            <intent-filter android:priority="-500" >
+257-->[:firebase_messaging] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:23:13-25:29
+258                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+258-->[:firebase_messaging] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:24:17-78
+258-->[:firebase_messaging] C:\Users\chaourad\Documents\evenmt_sportif\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:24:25-75
+259            </intent-filter>
+260        </service>
+261
+262        <provider
+262-->[com.google.firebase:firebase-common:20.4.2] C:\Users\chaourad\.gradle\caches\transforms-3\29429379be0edfde063e43fae29f4d1b\transformed\jetified-firebase-common-20.4.2\AndroidManifest.xml:23:9-28:39
+263            android:name="com.google.firebase.provider.FirebaseInitProvider"
+263-->[com.google.firebase:firebase-common:20.4.2] C:\Users\chaourad\.gradle\caches\transforms-3\29429379be0edfde063e43fae29f4d1b\transformed\jetified-firebase-common-20.4.2\AndroidManifest.xml:24:13-77
+264            android:authorities="com.example.evenmt_sportif.firebaseinitprovider"
+264-->[com.google.firebase:firebase-common:20.4.2] C:\Users\chaourad\.gradle\caches\transforms-3\29429379be0edfde063e43fae29f4d1b\transformed\jetified-firebase-common-20.4.2\AndroidManifest.xml:25:13-72
+265            android:directBootAware="true"
+265-->[com.google.firebase:firebase-common:20.4.2] C:\Users\chaourad\.gradle\caches\transforms-3\29429379be0edfde063e43fae29f4d1b\transformed\jetified-firebase-common-20.4.2\AndroidManifest.xml:26:13-43
+266            android:exported="false"
+266-->[com.google.firebase:firebase-common:20.4.2] C:\Users\chaourad\.gradle\caches\transforms-3\29429379be0edfde063e43fae29f4d1b\transformed\jetified-firebase-common-20.4.2\AndroidManifest.xml:27:13-37
+267            android:initOrder="100" />
+267-->[com.google.firebase:firebase-common:20.4.2] C:\Users\chaourad\.gradle\caches\transforms-3\29429379be0edfde063e43fae29f4d1b\transformed\jetified-firebase-common-20.4.2\AndroidManifest.xml:28:13-36
+268
+269        <activity
+269-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\chaourad\.gradle\caches\transforms-3\680a2964d8a0bce7cbd43c0f88e0420c\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
+270            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+270-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\chaourad\.gradle\caches\transforms-3\680a2964d8a0bce7cbd43c0f88e0420c\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:19-85
+271            android:exported="false"
+271-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\chaourad\.gradle\caches\transforms-3\680a2964d8a0bce7cbd43c0f88e0420c\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:22:19-43
+272            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+272-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\chaourad\.gradle\caches\transforms-3\680a2964d8a0bce7cbd43c0f88e0420c\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:21:19-78
+273
+274        <meta-data
+274-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\chaourad\.gradle\caches\transforms-3\55b4e390742817dc4b9653e42d791034\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:21:9-23:69
+275            android:name="com.google.android.gms.version"
+275-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\chaourad\.gradle\caches\transforms-3\55b4e390742817dc4b9653e42d791034\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:22:13-58
+276            android:value="@integer/google_play_services_version" />
+276-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\chaourad\.gradle\caches\transforms-3\55b4e390742817dc4b9653e42d791034\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:23:13-66
+277
+278        <uses-library
+278-->[androidx.window:window:1.0.0-beta04] C:\Users\chaourad\.gradle\caches\transforms-3\076eb9235982ee06112d76594ea8585f\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
+279            android:name="androidx.window.extensions"
+279-->[androidx.window:window:1.0.0-beta04] C:\Users\chaourad\.gradle\caches\transforms-3\076eb9235982ee06112d76594ea8585f\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
+280            android:required="false" />
+280-->[androidx.window:window:1.0.0-beta04] C:\Users\chaourad\.gradle\caches\transforms-3\076eb9235982ee06112d76594ea8585f\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
+281        <uses-library
+281-->[androidx.window:window:1.0.0-beta04] C:\Users\chaourad\.gradle\caches\transforms-3\076eb9235982ee06112d76594ea8585f\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
+282            android:name="androidx.window.sidecar"
+282-->[androidx.window:window:1.0.0-beta04] C:\Users\chaourad\.gradle\caches\transforms-3\076eb9235982ee06112d76594ea8585f\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
+283            android:required="false" />
+283-->[androidx.window:window:1.0.0-beta04] C:\Users\chaourad\.gradle\caches\transforms-3\076eb9235982ee06112d76594ea8585f\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
+284
+285        <provider
+285-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:24:9-32:20
+286            android:name="androidx.startup.InitializationProvider"
+286-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:25:13-67
+287            android:authorities="com.example.evenmt_sportif.androidx-startup"
+287-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:26:13-68
+288            android:exported="false" >
+288-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:27:13-37
+289            <meta-data
+289-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:29:13-31:52
+290                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+290-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:30:17-85
+291                android:value="androidx.startup" />
+291-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:31:17-49
+292        </provider>
+293
+294        <receiver
+294-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:34:9-52:20
+295            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+295-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:35:13-76
+296            android:directBootAware="false"
+296-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:36:13-44
+297            android:enabled="true"
+297-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:37:13-35
+298            android:exported="true"
+298-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:38:13-36
+299            android:permission="android.permission.DUMP" >
+299-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:39:13-57
+300            <intent-filter>
+300-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:40:13-42:29
+301                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+301-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:41:17-91
+301-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:41:25-88
+302            </intent-filter>
+303            <intent-filter>
+303-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:43:13-45:29
+304                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+304-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:44:17-85
+304-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:44:25-82
+305            </intent-filter>
+306            <intent-filter>
+306-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:46:13-48:29
+307                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+307-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:47:17-88
+307-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:47:25-85
+308            </intent-filter>
+309            <intent-filter>
+309-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:49:13-51:29
+310                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+310-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:50:17-95
+310-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\chaourad\.gradle\caches\transforms-3\b92cbf7d134b1c7f58467c023b6e5f48\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:50:25-92
+311            </intent-filter>
+312        </receiver>
+313
+314        <service
+314-->[com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\chaourad\.gradle\caches\transforms-3\c25200b336a583dea6bfe89926a97535\transformed\jetified-transport-backend-cct-3.1.8\AndroidManifest.xml:28:9-34:19
+315            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+315-->[com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\chaourad\.gradle\caches\transforms-3\c25200b336a583dea6bfe89926a97535\transformed\jetified-transport-backend-cct-3.1.8\AndroidManifest.xml:29:13-103
+316            android:exported="false" >
+316-->[com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\chaourad\.gradle\caches\transforms-3\c25200b336a583dea6bfe89926a97535\transformed\jetified-transport-backend-cct-3.1.8\AndroidManifest.xml:30:13-37
+317            <meta-data
+317-->[com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\chaourad\.gradle\caches\transforms-3\c25200b336a583dea6bfe89926a97535\transformed\jetified-transport-backend-cct-3.1.8\AndroidManifest.xml:31:13-33:39
+318                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+318-->[com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\chaourad\.gradle\caches\transforms-3\c25200b336a583dea6bfe89926a97535\transformed\jetified-transport-backend-cct-3.1.8\AndroidManifest.xml:32:17-94
+319                android:value="cct" />
+319-->[com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\chaourad\.gradle\caches\transforms-3\c25200b336a583dea6bfe89926a97535\transformed\jetified-transport-backend-cct-3.1.8\AndroidManifest.xml:33:17-36
+320        </service>
+321        <service
+321-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\chaourad\.gradle\caches\transforms-3\b532c95a59e9f33503a80543acc85a14\transformed\jetified-transport-runtime-3.1.8\AndroidManifest.xml:26:9-30:19
+322            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+322-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\chaourad\.gradle\caches\transforms-3\b532c95a59e9f33503a80543acc85a14\transformed\jetified-transport-runtime-3.1.8\AndroidManifest.xml:27:13-117
+323            android:exported="false"
+323-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\chaourad\.gradle\caches\transforms-3\b532c95a59e9f33503a80543acc85a14\transformed\jetified-transport-runtime-3.1.8\AndroidManifest.xml:28:13-37
+324            android:permission="android.permission.BIND_JOB_SERVICE" >
+324-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\chaourad\.gradle\caches\transforms-3\b532c95a59e9f33503a80543acc85a14\transformed\jetified-transport-runtime-3.1.8\AndroidManifest.xml:29:13-69
+325        </service>
+326
+327        <receiver
+327-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\chaourad\.gradle\caches\transforms-3\b532c95a59e9f33503a80543acc85a14\transformed\jetified-transport-runtime-3.1.8\AndroidManifest.xml:32:9-34:40
+328            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+328-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\chaourad\.gradle\caches\transforms-3\b532c95a59e9f33503a80543acc85a14\transformed\jetified-transport-runtime-3.1.8\AndroidManifest.xml:33:13-132
+329            android:exported="false" />
+329-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\chaourad\.gradle\caches\transforms-3\b532c95a59e9f33503a80543acc85a14\transformed\jetified-transport-runtime-3.1.8\AndroidManifest.xml:34:13-37
+330    </application>
+331
+332</manifest>
