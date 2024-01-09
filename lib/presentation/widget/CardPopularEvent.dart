@@ -96,7 +96,7 @@ class CardPopularEvent extends StatelessWidget {
                   const SizedBox(height: 6),
                   Row(
                     children: [
-const Icon(Icons.location_on), 
+                      const Icon(Icons.location_on),
                       const SizedBox(width: 4),
                       Text(
                         eventModel.lieu,
@@ -114,7 +114,7 @@ const Icon(Icons.location_on),
                   height: 30,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                color:const Color.fromARGB(255, 190, 194, 224),
+                    color: const Color.fromARGB(255, 190, 194, 224),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: GestureDetector(

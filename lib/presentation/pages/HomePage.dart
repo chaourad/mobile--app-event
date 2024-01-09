@@ -1,9 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+
 import 'package:evenmt_sportif/model/evenement.dart';
 import 'package:evenmt_sportif/presentation/widget/CardEventThisMonth.dart';
 import 'package:evenmt_sportif/presentation/widget/CardPopularEvent.dart';
 import 'package:evenmt_sportif/presentation/widget/categoryItem.dart';
-import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -69,14 +70,14 @@ class _HomePageState extends State<HomePage> {
             ),
 */
             const SizedBox(height: 54),
-            const TitleList(titre: "Category of sport"),
+         const    TitleList(titre: "Category of sport" ,page: "category"),
             const CategoryListView(),
             const SizedBox(height: 24),
-            const TitleList(titre: "Popular Event"),
+         const    TitleList(titre: "Popular Event", page:"eventpopular"),
             const SizedBox(height: 16),
             _cardhoe(),
             const SizedBox(height: 24),
-            const TitleList(titre: "Event this Month"),
+            const TitleList(titre: "Event this Month", page:"event"),
             const SizedBox(height: 16),
             _cardevent(),
           ],
@@ -90,15 +91,12 @@ _cardhoe() => StreamBuilder<QuerySnapshot>(
   stream: FirebaseFirestore.instance.collection('événements').snapshots(),
   builder: (context, snapshot) {
     if (snapshot.hasData) {
-      // Convertir les documents en une liste d'événements
       List<Evenements> events = snapshot.data!.docs.map((doc) {
         return Evenements.fromJson(doc);
       }).toList();
 
-      // Trier les événements en fonction du nombre de participants
       events.sort((a, b) => b.nbrpartiactul.compareTo(a.nbrpartiactul));
 
-      // Prendre les 5 premiers événements
       List<Evenements> top5Events = events.take(5).toList();
 
       return SingleChildScrollView(
@@ -142,8 +140,12 @@ _cardevent() => StreamBuilder<QuerySnapshot>(
 
 class TitleList extends StatelessWidget {
   final String titre;
-
-  const TitleList({Key? key, required this.titre}) : super(key: key);
+  
+  final String page;
+  const TitleList({
+    Key? key,
+    required this.titre, required this.page
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -156,12 +158,18 @@ class TitleList extends StatelessWidget {
             titre,
             style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
           ),
-          const Text(
-            "View All",
-            style: TextStyle(
-              fontWeight: FontWeight.w400,
-              fontSize: 12,
-              color: Colors.blue,
+          GestureDetector(
+            onTap: (){
+               Navigator.pushNamed(context, page);
+
+            },
+            child: const Text(
+              "View All",
+              style: TextStyle(
+                fontWeight: FontWeight.w400,
+                fontSize: 12,
+                color: Colors.blue,
+              ),
             ),
           ),
         ],

@@ -1,7 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:evenmt_sportif/model/evenement.dart';
 import 'package:evenmt_sportif/presentation/pages/EventDetailsPage.dart';
-import 'package:evenmt_sportif/presentation/widget/StackParticipant.dart';
-import 'package:flutter/material.dart';
+import 'package:intl/intl.dart'; // Import the intl package
 
 class CardEventThisMonth extends StatelessWidget {
   final Evenements eventModel;
@@ -11,6 +12,12 @@ class CardEventThisMonth extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Convert Timestamp to DateTime
+    DateTime dateTime = eventModel.dateDebut.toDate();
+
+    // Format DateTime as a string
+    String formattedDate = DateFormat('yyyy-MM-dd HH:mm').format(dateTime);
+
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -51,7 +58,8 @@ class CardEventThisMonth extends StatelessWidget {
                 const SizedBox(height: 4),
                 Row(
                   children: [
-const Icon(Icons.location_on),                    const SizedBox(width: 4),
+                    const Icon(Icons.location_on),
+                    const SizedBox(width: 4),
                     Text(
                       eventModel.lieu,
                       style: const TextStyle(
@@ -64,14 +72,19 @@ const Icon(Icons.location_on),                    const SizedBox(width: 4),
                 const SizedBox(
                   height: 3,
                 ),
-                const Expanded(
-                  child: StackParticipant(
-                    width: 25,
-                    height: 25,
-                    fontSize: 12,
-                    positionText: 95,
-                  ),
-                )
+                // Display formatted date
+                 Row(
+                  children: [
+                    const SizedBox(width: 4),
+                   Text(
+                    "Category : "+ eventModel.typeEvnId,
+                      style: const TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey,
+                      ),
+                    )
+                  ],),
+                
               ],
             ),
             const Spacer(),
@@ -79,7 +92,7 @@ const Icon(Icons.location_on),                    const SizedBox(width: 4),
               height: 50,
               width: 35,
               decoration: BoxDecoration(
-                color:const Color.fromARGB(255, 190, 194, 224),
+                color: const Color.fromARGB(255, 190, 194, 224),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: const Column(

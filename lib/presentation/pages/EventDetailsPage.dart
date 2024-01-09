@@ -212,7 +212,6 @@ class EventDetailsPage extends StatelessWidget {
                     if (userId != null && userId != eventModel.userId) {
                       applyForEvent();
                     } else {
-                      // L'utilisateur actuel est le créateur de l'événement, désactivez le bouton
                       print(
                           "Current user is the creator of the event, button disabled");
                     }

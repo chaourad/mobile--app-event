@@ -1,14 +1,11 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:evenmt_sportif/model/evenement.dart';
-import 'package:evenmt_sportif/presentation/pages/EventDetailsPage.dart';
 import 'package:evenmt_sportif/presentation/pages/MyEventDetailEdit.dart';
 import 'package:evenmt_sportif/presentation/widget/StackParticipant.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 
 class CardSp extends StatelessWidget {
-    final Evenements eventModel;
+  final Evenements eventModel;
 
   const CardSp({super.key, required this.eventModel});
 
@@ -19,12 +16,13 @@ class CardSp extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => DetailsPage(eventModel: eventModel), // Pass eventData to the details page
+            builder: (context) => DetailsPage(
+                eventModel: eventModel), // Pass eventData to the details page
           ),
         );
       },
       child: Container(
-        width: 150, 
+        width: 150,
         margin: const EdgeInsets.all(8),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
@@ -34,9 +32,10 @@ class CardSp extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: 100, 
+              height: 100,
               decoration: BoxDecoration(
-                borderRadius:const BorderRadius.vertical(top: Radius.circular(12)),
+                borderRadius:
+                    const BorderRadius.vertical(top: Radius.circular(12)),
                 image: DecorationImage(
                   fit: BoxFit.cover,
                   image: NetworkImage(eventModel.image),
@@ -50,7 +49,8 @@ class CardSp extends StatelessWidget {
                 children: [
                   Text(
                     eventModel.name,
-                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 4),
                   Text(
@@ -69,12 +69,10 @@ class CardSp extends StatelessWidget {
 
 class CardMyEvent extends StatelessWidget {
   final Evenements eventModel;
-  final bool showNotificationButton; // Nouveau paramètre
 
   const CardMyEvent({
     Key? key,
     required this.eventModel,
-    required this.showNotificationButton,
   }) : super(key: key);
 
   @override
@@ -115,7 +113,8 @@ class CardMyEvent extends StatelessWidget {
                 children: [
                   Text(
                     eventModel.name,
-                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 4),
                   Text(
@@ -125,31 +124,18 @@ class CardMyEvent extends StatelessWidget {
                 ],
               ),
             ),
-            if (showNotificationButton) // Afficher le bouton rouge si showNotificationButton est vrai
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: Colors.red,
-                  borderRadius: BorderRadius.vertical(bottom: Radius.circular(12)),
-                ),
-                child: Center(
-                  child: Text(
-                    'New Notification',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ),
+          
           ],
         ),
       ),
     );
   }
-}class DetailsPage extends StatelessWidget {
+}
+
+class DetailsPage extends StatelessWidget {
   final Evenements eventModel;
 
-  const DetailsPage({required this.eventModel, Key? key})
-      : super(key: key);
+  const DetailsPage({required this.eventModel, Key? key}) : super(key: key);
 
   void _shareEvent(BuildContext context) {
     final String text =
@@ -162,7 +148,7 @@ class CardMyEvent extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Event Details"),
-        backgroundColor:const Color(0xFF5569FE), // Change app bar color
+        backgroundColor: const Color(0xFF5569FE), 
         actions: [
           IconButton(
             icon: const Icon(Icons.share),
@@ -245,10 +231,9 @@ class CardMyEvent extends StatelessWidget {
             Text(
               eventModel.name,
               style: const TextStyle(
-                fontSize: 24, 
+                fontSize: 24,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
-              
               ),
             ),
             const SizedBox(height: 12),
@@ -259,7 +244,7 @@ class CardMyEvent extends StatelessWidget {
                 Text(
                   eventModel.lieu,
                   style: const TextStyle(
-                    fontSize: 16, // Adjust font size
+                    fontSize: 16, 
                     color: Colors.grey,
                   ),
                 ),
@@ -269,14 +254,15 @@ class CardMyEvent extends StatelessWidget {
             Row(
               children: [
                 const StackParticipant(
-                  width: 30, // Increase participant icon size
+                  width: 30, 
                   height: 30,
-                  fontSize: 16, // Increase font size
-                  positionText: 110, // Adjust position
+                  fontSize: 16, 
+                  positionText: 110,
                 ),
-     const SizedBox(
-                        width: 90,
-                      ),                Text(
+                const SizedBox(
+                  width: 90,
+                ),
+                Text(
                   '${eventModel.nbrpartiactul} Participants',
                   style: const TextStyle(
                     color: Color(0xFF5569FE),

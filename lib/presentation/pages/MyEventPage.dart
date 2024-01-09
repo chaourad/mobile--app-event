@@ -53,7 +53,7 @@ class _MyEventPageState extends State<MyEventPage> {
           ),
         ),
         SizedBox(
-          height: 200, // Adjust the height based on your design
+          height: 200, 
           child: StreamBuilder<QuerySnapshot>(
             stream: FirebaseFirestore.instance
                 .collection('événements')
@@ -78,7 +78,6 @@ class _MyEventPageState extends State<MyEventPage> {
 
                   return CardMyEvent(
                     eventModel: eventModel,
-                    showNotificationButton: eventModel.hasNotification,
                   );
                   },
                 );

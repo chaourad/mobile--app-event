@@ -1,3 +1,6 @@
+import 'package:evenmt_sportif/presentation/pages/AllCategoty.dart';
+import 'package:evenmt_sportif/presentation/pages/AllEvent.dart';
+import 'package:evenmt_sportif/presentation/pages/AllEventPopular.dart';
 import 'package:evenmt_sportif/presentation/pages/LoginPage.dart';
 import 'package:evenmt_sportif/firebase_options.dart';
 import 'package:evenmt_sportif/presentation/pages/RegisterPage.dart';
@@ -27,6 +30,10 @@ class MainApp extends StatelessWidget {
         "login": (context) =>  LoginPage(),
         "register" :(context) =>  RegisterPage(),
         "home" :(context) =>const NavBarButton(),
+         "category": (context) => const AllCategory(),
+        "eventpopular" :(context) =>const  AllEventPopular(),
+        "event" :(context) =>const  AllEvent(),
+
        },
     );
   }

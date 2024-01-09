@@ -47,7 +47,6 @@ class _ListParticipantPageState extends State<ListParticipantPage> {
   }else{
 
 
-  // Get a reference to the event document in Firestore
   DocumentReference eventRef = FirebaseFirestore.instance
       .collection('événements')
       .doc(widget.eventModel.id);
@@ -82,7 +81,6 @@ class _ListParticipantPageState extends State<ListParticipantPage> {
 }
   void _refuseparticipe(String participantEmail)async{
     setState(() {
-      // Remove the participant from the list
       participantEmails.remove(participantEmail);
     });
      await FirebaseFirestore.instance
@@ -98,21 +96,17 @@ class _ListParticipantPageState extends State<ListParticipantPage> {
 
   }
 
-  // Function to retrieve participant emails from Firestore
   void _retrieveParticipantEmails() async {
-    // Query Firestore for the listattentEvent collection
     QuerySnapshot<Map<String, dynamic>> querySnapshot = await FirebaseFirestore
         .instance
         .collection('listattentEvent')
         .where('eventId', isEqualTo: widget.eventModel.id)
         .get();
 
-    // Extract participant emails from the query results
     List<String> emails = querySnapshot.docs
         .map((doc) => doc['emailapplicantUser'] as String)
         .toList();
 
-    // Update the state to include the retrieved emails
     setState(() {
       participantEmails = emails;
     });
@@ -149,7 +143,6 @@ class _ListParticipantPageState extends State<ListParticipantPage> {
 
  Widget _participantList() {
   if (participantEmails.isEmpty) {
-    // If the participant list is empty, display a message at the center
     return  const Center(
       child: Text(
         "No participants",
@@ -157,7 +150,6 @@ class _ListParticipantPageState extends State<ListParticipantPage> {
       ),
     );
   } else {
-    // If there are participants, display the list
     return Expanded(
       child: ListView.builder(
         itemCount: participantEmails.length,
@@ -168,23 +160,19 @@ class _ListParticipantPageState extends State<ListParticipantPage> {
               child: Text((index + 1).toString()),
             ),
             title: Text(participantEmails[index]),
-            // Add other details or actions as needed
             trailing: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 IconButton(
                   icon:const Icon(Icons.check, color: Colors.green),
                   onPressed: () {
-                    // Handle confirmation logic here
-                  //  print(widget.eventModel.nbrpartiactul);
                     _acceptparticipant(participantEmails[index]);
                   },
                 ),
                 IconButton(
                   icon: const Icon(Icons.close, color: Colors.red),
                   onPressed: () {
-                    // Handle rejection logic here
-                   // print('no');
+                   
                     _refuseparticipe(participantEmails[index]);
                   },
                 ),

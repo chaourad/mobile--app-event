@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:evenmt_sportif/model/evenement.dart';
+
 class ListAllPartipant extends StatefulWidget {
   final Evenements eventModel;
 
@@ -11,40 +12,56 @@ class ListAllPartipant extends StatefulWidget {
 }
 
 class _ListAllPartipantState extends State<ListAllPartipant> {
-  late List<String> participantEmails = []; 
+  late List<String> participantId = [];
+  late List<String> participantEmails = [];
 
   @override
   void initState() {
     super.initState();
-    _retrieveParticipantEmails();
+    _retrieveParticipantId();
+    _changeparticipantIdversEmail();
   }
 
-  void _retrieveParticipantEmails() {
-    // Check if participants list is not null
+  void _retrieveParticipantId() {
     if (widget.eventModel.participants != null) {
-      // Assign the list of participants to participantEmails
-      participantEmails = List<String>.from(widget.eventModel.participants!);
+      participantId = List<String>.from(widget.eventModel.participants!);
+    }
+  }
+
+  void _changeparticipantIdversEmail() async {
+    for (int i = 0; i < participantId.length; i++) {
+      String userId = participantId[i];
+
+      DocumentSnapshot userSnapshot = await FirebaseFirestore.instance
+          .collection('users')
+          .where('userId', isEqualTo: userId)
+          .limit(1)
+          .get()
+          .then((value) => value.docs.first);
+
+      String email = userSnapshot['email'];
+
+      setState(() {
+        participantEmails.add(email);
+      });
     }
   }
 
   void _removeParticipant(String email) {
     setState(() {
-      // Remove the participant from the list
       participantEmails.remove(email);
     });
 
-    // Update the participants list in Firestore
     FirebaseFirestore.instance
         .collection('événements')
         .doc(widget.eventModel.id)
         .update({
       'participants': participantEmails,
-      'nbrpartiactul': FieldValue.increment(-1)
+      'nbrpartiactul': FieldValue.increment(-1),
     }).then((value) {
       print('Participant removed successfully.');
     }).catchError((error) {
       print('Error removing participant: $error');
-      // Handle error as needed
     });
   }
 
@@ -70,7 +87,6 @@ class _ListAllPartipantState extends State<ListAllPartipant> {
 
   Widget _participantList() {
     if (participantEmails.isEmpty) {
-      // If the participant list is empty, display a message at the center
       return const Center(
         child: Text(
           "No participants",
@@ -78,7 +94,6 @@ class _ListAllPartipantState extends State<ListAllPartipant> {
         ),
       );
     } else {
-      // If there are participants, display the list
       return Expanded(
         child: ListView.builder(
           itemCount: participantEmails.length,
@@ -97,7 +112,6 @@ class _ListAllPartipantState extends State<ListAllPartipant> {
                   IconButton(
                     icon: const Icon(Icons.delete, color: Colors.red),
                     onPressed: () {
-                      // Handle rejection logic here
                       _removeParticipant(participantEmail);
                     },
                   ),

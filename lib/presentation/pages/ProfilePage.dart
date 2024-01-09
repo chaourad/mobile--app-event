@@ -86,6 +86,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
       Map<String, dynamic> data = {
         "image": photoUrl,
+        "username":username,
         'created_at': FieldValue.serverTimestamp()
       };
 
@@ -151,7 +152,7 @@ class _ProfilePageState extends State<ProfilePage> {
               children: [
                 Text(
                   username.isNotEmpty ? username : "Guest User",
-                  style: TextStyle(fontWeight: FontWeight.w900, fontSize: 26),
+                  style: const TextStyle(fontWeight: FontWeight.w900, fontSize: 26),
                 )
               ],
             ),
